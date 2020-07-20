@@ -1,10 +1,13 @@
 import requests
+import datetime
 import pubfunc
 
 legal = pubfunc.legal_date_time()
 if legal == 0:
     print("休市时间！")
     exit(0)
+else:
+    print(str(datetime.datetime.now()) + " 开始...")
 
 config_file_dir = '/home/yanjc/sbin/stock/list.txt'
 config_file = open(config_file_dir)
@@ -42,3 +45,5 @@ json_data = {
 
 wechat_url = 'https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=62dfeb6d-59bc-4819-a773-f72a7347a30a'
 requests.post(url=wechat_url, json=json_data)
+
+print(str(datetime.datetime.now()) + " 结束...")

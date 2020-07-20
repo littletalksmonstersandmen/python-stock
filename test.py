@@ -1,4 +1,3 @@
-import pubfunc
+import datetime
 
-res = pubfunc.legal_date_time()
-print(res)
+print(datetime.datetime.now())
