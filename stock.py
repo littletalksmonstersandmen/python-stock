@@ -22,15 +22,19 @@ while 1:
     req_str = 'http://hq.sinajs.cn/list=' + list[0]
     r = requests.get(req_str)
     res = r.text
+    print(res)
     result = res.split('=')[1]                            # 截取等号之后的数据部分
     
     name = result.split(',')[0].replace('"', '')          # 股票名称
     start_price = float(result.split(',')[1])             # 今日开盘价
     yesterday_price = float(result.split(',')[2])         # 昨日收盘价
     now_price = float(result.split(',')[3])               # 当前价格
-    rate = (now_price-yesterday_price)/start_price * 100      # 涨跌幅度
-    
-    content = content + "{0}  {1:.2f}  {2:.2f}  {3:.2f}%".format(name, start_price, now_price, rate) + '\n'
+
+    if start_price > 0:
+        rate = (now_price-yesterday_price)/start_price * 100      # 涨跌幅度
+        content = content + "{0}  {1:.2f}%  {2:.2f}  {3:.2f}".format(name, rate, start_price, now_price) + '\n'
+    else:
+        content = content + "{0}  ".format(name) + '今日停牌' + '\n'
 
 config_file.close()
 
