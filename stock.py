@@ -32,7 +32,8 @@ while 1:
 
     if start_price > 0:
         rate = (now_price-yesterday_price)/start_price * 100      # 涨跌幅度
-        content = content + "{0}  {1:.2f}%  {2:.2f}  {3:.2f}".format(name, rate, start_price, now_price) + '\n'
+        #content = content + "{0}  {1:.2f}%  {2:.2f}  {3:.2f}".format(name, rate, start_price, now_price) + '\n'
+        content = content + "{0}  {3:.2f} {1:.2f}%  {2:.2f}".format(name, now_price, rate, start_price) + '\n'
     else:
         content = content + "{0}  ".format(name) + '今日停牌' + '\n'
 
