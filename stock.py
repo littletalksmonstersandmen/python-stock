@@ -3,11 +3,9 @@ import datetime
 import pubfunc
 
 legal = pubfunc.legal_date_time()
-if legal == 0:
-    print("休市时间！")
-    exit(0)
-else:
-    print(str(datetime.datetime.now()) + " 开始...")
+#if legal == 0:
+#    print("休市时间！")
+#    exit(0)
 
 config_file_dir = '/home/yanjc/sbin/stock/list.txt'
 config_file = open(config_file_dir)
@@ -22,7 +20,7 @@ while 1:
     req_str = 'http://hq.sinajs.cn/list=' + list[0]
     r = requests.get(req_str)
     res = r.text
-    print(res)
+    #print(res)
     result = res.split('=')[1]                            # 截取等号之后的数据部分
     
     name = result.split(',')[0].replace('"', '')          # 股票名称
@@ -49,6 +47,7 @@ json_data = {
 }
 
 wechat_url = 'https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=62dfeb6d-59bc-4819-a773-f72a7347a30a'
-requests.post(url=wechat_url, json=json_data)
+#requests.post(url=wechat_url, json=json_data)
+print(content)
 
-print(str(datetime.datetime.now()) + " 结束...")
+#print(str(datetime.datetime.now()) + " 结束...")
