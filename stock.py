@@ -16,7 +16,13 @@ while 1:
     line = config_file.readline()
     if not line:
         break
+
     list = line.split(",", 1)
+    if list[0].startswith("*"): 
+        content = content + "**************************\n"
+        content = content + "**************************\n"
+        continue
+
     req_str = 'http://hq.sinajs.cn/list=' + list[0]
     r = requests.get(req_str)
     res = r.text
