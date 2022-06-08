@@ -1,2 +1,1 @@
-cd /home/yanjc/sbin/stock
-python stock.py
+python ./stock.py

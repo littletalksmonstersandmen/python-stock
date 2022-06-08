@@ -7,10 +7,14 @@ legal = pubfunc.legal_date_time()
 #    print("休市时间！")
 #    exit(0)
 
-config_file_dir = '/home/yanjc/sbin/stock/list.txt'
+config_file_dir = 'list.txt'
 config_file = open(config_file_dir)
 
 content = ''
+
+headers={
+		'Referer':'https://finance.sina.com.cn'
+	}
 
 while 1:
     line = config_file.readline()
@@ -24,10 +28,11 @@ while 1:
         continue
 
     req_str = 'http://hq.sinajs.cn/list=' + list[0]
-    r = requests.get(req_str)
+    r = requests.get(req_str, headers=headers)
     res = r.text
     #print(res)
     result = res.split('=')[1]                            # 截取等号之后的数据部分
+    #print(result)
     
     name = result.split(',')[0].replace('"', '')          # 股票名称
     start_price = float(result.split(',')[1])             # 今日开盘价
