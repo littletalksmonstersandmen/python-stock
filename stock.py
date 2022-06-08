@@ -7,7 +7,7 @@ legal = pubfunc.legal_date_time()
 #    print("休市时间！")
 #    exit(0)
 
-config_file_dir = 'list.txt'
+config_file_dir = '/home/yanjc/git/python-stock/list.txt'
 config_file = open(config_file_dir)
 
 content = ''
